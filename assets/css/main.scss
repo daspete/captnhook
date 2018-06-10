@@ -1,9 +1,111 @@
-html, body
-{
-  background-color: #fff;
-  color: #000;
-  letter-spacing: 0.5px;
-  font-family: "Source Sans Pro", Arial, sans-serif;
-  height: 100vh;
-  margin: 0;
+@import "variables";
+
+@import "microreset";
+@import "bootstrap";
+
+@import "fonts";
+
+
+
+body {
+    background: #f9f9f9;
+    background: linear-gradient(to bottom, #f9f9f9 1%,#fafafa 100%);
+}
+
+.app {
+    &__header {
+        padding: 5px;
+        background-color: $theme-base-color;
+        color: white;
+        font-weight: 700;
+        font-size: 20px;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+    &__content {
+        position: fixed;
+        top: 40px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: auto;
+        padding: 30px;
+    }
+}
+
+.project-list {
+    &__item {
+        box-shadow: $element-shadow-base;
+        background-color: white;
+    }
+
+    &__header {
+        background-color: lighten($theme-base-color, 10%);
+        color: white;
+    }
+
+    &__header,
+    &__actions,
+    &__repo {
+        padding: 5px 8px;
+    }
+
+    &__search {
+        margin-bottom: 30px;
+    }
+
+    &__project-name {
+        font-weight: 700;
+    }
+
+    &__project-repo {
+        font-size: 12px;
+    }
+
+    button, a {
+        display: inline-block;
+        background: transparent;
+        border: 0;
+        height: 20px;
+        padding: 3px 5px;
+        padding-bottom: 0;
+        color: black;
+        cursor: pointer;
+        text-decoration: none;
+    }
+}
+
+.project-create {
+    box-shadow: $element-shadow-base;
+    background-color: white;
+
+    &__header {
+        background-color: lighten($theme-base-color, 10%);
+        color: white;
+    }
+
+
+    &__header,
+    &__content {
+        padding: 5px 8px;
+    }
+
+    &__branch {
+        padding: 5px 8px;
+        box-shadow: $element-shadow-base;
+        margin: 10px 0;
+    }
+
+    button {
+        background-color: $theme-base-color;
+        color: white;
+        font-weight: 700;
+        border: 0;
+        cursor: pointer;
+        padding: 3px 5px;
+    }
 }

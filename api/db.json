@@ -1,0 +1,19 @@
+{
+  "projects": [
+    {
+      "name": "nuxt-playground",
+      "repo": "git@github.com:daspete/nuxt-playground.git",
+      "status": true,
+      "id": 1
+    }
+  ],
+  "branches": [
+    {
+      "branch": "master",
+      "hasupdate": false,
+      "serverpath": "/mnt/d/projects/nuxt-playground",
+      "projectId": 1,
+      "id": 1
+    }
+  ]
+}

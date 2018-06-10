@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+const nodeExternals = require('webpack-node-externals')
+
 module.exports = {
     
     /*
@@ -35,12 +39,30 @@ module.exports = {
      ** Add axios globally
      */
     build: {
-        vendor: ['axios']
+        //vendor: ['axios'],
+
+        extractCSS: true,
+
+        extend(config, { isServer }) {
+            if (isServer) {
+                config.externals = [
+                    nodeExternals({ whitelist: [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i, /^vue-awesome/] })
+                ]
+            }
+        }
     },
 
     serverMiddleware: [
-        // API middleware
-        '~/api/index.js'
+        '~/server/index.js'
+    ],
+
+    plugins: [
+        '~/plugins/vue-awesome',
+        '~/plugins/components'
+    ],
+
+    modules: [
+        '@nuxtjs/axios'
     ]
 
 }
