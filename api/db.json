@@ -11,9 +11,18 @@
     {
       "branch": "master",
       "hasupdate": false,
-      "serverpath": "/mnt/d/projects/nuxt-playground",
+      "autodeploy": false,
+      "serverpath": "/var/www/webs/nuxt-playground",
       "projectId": 1,
       "id": 1
+    },
+    {
+      "branch": "develop",
+      "hasupdate": false,
+      "autodeploy": true,
+      "serverpath": "/var/www/webs/nuxt-playground-dev",
+      "projectId": 1,
+      "id": 2
     }
   ]
 }

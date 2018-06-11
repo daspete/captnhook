@@ -54,6 +54,23 @@ body {
         padding: 5px 8px;
     }
 
+    &__actions {
+        position: absolute;
+        top: -5px;
+        right: -2px;
+        width: 30px;
+
+        .button {
+            width: 30px;
+        }
+
+    }
+
+    &__branch-name {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
     &__search {
         margin-bottom: 30px;
     }
@@ -64,18 +81,6 @@ body {
 
     &__project-repo {
         font-size: 12px;
-    }
-
-    button, a {
-        display: inline-block;
-        background: transparent;
-        border: 0;
-        height: 20px;
-        padding: 3px 5px;
-        padding-bottom: 0;
-        color: black;
-        cursor: pointer;
-        text-decoration: none;
     }
 }
 
@@ -88,24 +93,55 @@ body {
         color: white;
     }
 
+    input[type="text"]{
+        padding: 3px 5px;
+        width: 100%;
+        margin: 5px 0;
+        border: 1px solid rgba(black, 0.2);
+    }
+
 
     &__header,
     &__content {
         padding: 5px 8px;
     }
 
-    &__branch {
-        padding: 5px 8px;
-        box-shadow: $element-shadow-base;
-        margin: 10px 0;
+    &__branches {
+        padding: 8px 0;
     }
 
-    button {
-        background-color: $theme-base-color;
+    &__branch {
+        padding: 5px 8px;
+        background-color: rgba(black, 0.05);
+        margin: 10px 0;
+    }
+}
+
+
+.button {
+    display: inline-block;
+    padding: 5px 8px 2px;
+    cursor: pointer;
+    border: 0;
+    text-align: center;
+
+    font-weight: 700;
+    background-color: $theme-base-color;
+    color: white;
+    text-decoration: none;
+    outline: none;
+
+    box-shadow: 0;
+
+    &:hover {
         color: white;
-        font-weight: 700;
-        border: 0;
-        cursor: pointer;
-        padding: 3px 5px;
+        text-decoration: none;
+        box-shadow: 0 0 8px rgba(black, 0.2);
+        background-color: lighten($theme-base-color, 20%);
+    }
+    
+    span {
+        display: inline-block;
+        padding-left: 5px;
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="project">
-        project
+        <!-- Possible header -->
         <nuxt-child/>
     </div>
 </template>

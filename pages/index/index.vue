@@ -2,7 +2,7 @@
     <div class="project-list">
         <div class="row">
             <div class="col-6">
-                <nuxt-link to="/create"><icon name="plus-circle"/> Create new project</nuxt-link>
+                <nuxt-link class="button" to="/create"><icon name="plus-circle"/><span>Create new project</span></nuxt-link>
             </div>
             <div class="col-6 text-right">
                 <div class="project-list__search">
@@ -26,8 +26,8 @@
                     <div class="project-list__actions">
                         <div class="row">
                             <div class="col-12 text-right">
-                                <nuxt-link to="create"><icon name="plus-circle"/></nuxt-link>
-                                <button><icon name="trash"/></button>
+                                <nuxt-link class="button" :to="`/${ project.name }`"><icon name="edit"/></nuxt-link>
+                                <button class="button" v-on:click="DeleteProject(project)"><icon name="trash"/></button>
                             </div>
                         </div>
                     </div>
@@ -39,10 +39,13 @@
                     >
                         <div class="row">
                             <div class="col-8">
-                                <nuxt-link :to="`${ project.name }/${ branch.branch }`"><icon name="edit"/> {{ branch.branch }}</nuxt-link> 
+                                <div class="project-list__branch-name">
+                                    {{ branch.branch }}
+                                </div>
                             </div>
                             <div class="col-4 text-right">
-                                <button v-if="branch.hasupdate"><icon name="cloud-upload"/> Deploy</button>
+                                <button class="button" v-on:click="DeleteBranch(branch)"><icon name="trash"/></button>
+                                <button class="button" v-if="branch.hasupdate"><icon name="cloud-upload"/><span>Deploy</span></button>
                             </div>
                         </div>
                         
@@ -83,6 +86,18 @@ export default {
                     return projectName.indexOf(search) !== -1;
                 });
             }
+        }
+    },
+
+    methods: {
+        async DeleteProject(project){
+            await this.$axios.$delete(`projects/${ project.id }`);
+            this.projects = await this.$axios.$get(`projects?_embed=branches`);
+        },
+
+        async DeleteBranch(branch){
+            await this.$axios.$delete(`branches/${ branch.id }`);
+            this.projects = await this.$axios.$get(`projects?_embed=branches`);
         }
     }
 }
