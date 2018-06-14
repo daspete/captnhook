@@ -1,14 +1,21 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
+const axios = require('axios')
+
 const token = process.env.TOKEN;
 
 app.use(bodyParser.json());
 
-app.get('/hook', (req, res) => {
+app.get('/hook', async (req, res) => {
     if(req.query.token !== token){
         return res.sendStatus(401);
     }
+
+    let { data } = await axios.get(process.env.API_URL + '/projects');
+    let projects = data;
+
+    console.log(projects);
 
     return res.end(req.query.challenge);
 });
