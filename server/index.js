@@ -20,12 +20,22 @@ app.get('/hook', async (req, res) => {
     return res.end(req.query.challenge);
 });
 
-app.post('/hook', (req, res) => {
+app.post('/hook', async (req, res) => {
     if(req.query.token !== token){
         return res.sendStatus(401);
     }
 
-    console.log(req.body);
+    let pushdata = req.body;
+
+    let { data: project } = await axios.get(process.env.API_URL + '/projects?repo=' + pushdata.repository.ssh_url);
+
+    project = project[0];
+
+    let currentpush = await axios.post(process.env.API_URL + '/pushes', {
+      pulled: false,
+      projectId: project.id,
+      data: pushdata
+    });
 
     res.end('');
 });
